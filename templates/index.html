@@ -125,13 +125,21 @@
     <script>
         // Function to toggle between full and truncated text
         document.querySelectorAll('.read-more').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const cardBody = this.closest('.card-body');
-                const truncateItems = cardBody.querySelectorAll('.truncate');
-                truncateItems.forEach(item => item.classList.toggle('truncate'));
-                this.textContent = this.textContent === 'Read More' ? 'Read Less' : 'Read More';
-            });
-        });
-    </script>
+    btn.addEventListener('click', function() {
+        const cardBody = this.closest('.card-body');
+        const truncateItems = cardBody.querySelectorAll('.truncate');
+        truncateItems.forEach(item => item.classList.toggle('truncate'));
+        
+        const expanded = btn.getAttribute('data-expanded') === 'true';
+        if (expanded) {
+            btn.textContent = 'Read More';
+            btn.setAttribute('data-expanded', 'false');
+        } else {
+            btn.textContent = 'Read Less';
+            btn.setAttribute('data-expanded', 'true');
+        }
+    });
+});
+    </script> 
 </body>
 </html>
